@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: mainColor,
-        title: Text(
+        title: const Text(
           'BMI Calculator',
           style: TextStyle(
               color: accentColor, fontSize: 35, fontWeight: FontWeight.w300),
