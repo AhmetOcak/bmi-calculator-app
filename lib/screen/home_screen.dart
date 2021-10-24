@@ -29,217 +29,219 @@ class _HomeScreenState extends State<HomeScreen> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          // GENDER SELECTION
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _isItActive = true;
-                  });
-                },
-                child: GenderContanier(
-                    gender: 'male',
-                    contColor:
-                        (_isItActive == true ? Colors.blue : Colors.white)),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _isItActive = false;
-                  });
-                },
-                child: GenderContanier(
-                    gender: 'female',
-                    contColor:
-                        (_isItActive == false ? Colors.blue : Colors.white)),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 19,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Your Height in cm',
-                style: TextStyle(
-                  color: accentColor,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w300,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            // GENDER SELECTION
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _isItActive = true;
+                    });
+                  },
+                  child: GenderContanier(
+                      gender: 'male',
+                      contColor:
+                          (_isItActive == true ? Colors.blue : Colors.white)),
                 ),
-                textAlign: TextAlign.start,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 90,
-              ),
-              // HEIGHT INPUT
-              TextField(
-                controller: _heightController,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                cursorColor: accentColor,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: '0',
-                  hintStyle: TextStyle(
-                    color: accentColor,
-                    fontSize: 42,
-                  ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _isItActive = false;
+                    });
+                  },
+                  child: GenderContanier(
+                      gender: 'female',
+                      contColor:
+                          (_isItActive == false ? Colors.blue : Colors.white)),
                 ),
-                style: const TextStyle(
-                  color: accentColor,
-                  fontSize: 42,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 90,
-              ),
-              const Text(
-                'Your Weight in kg',
-                style: TextStyle(
+              ],
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 19,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Your Height in cm',
+                  style: TextStyle(
                     color: accentColor,
                     fontSize: 25,
-                    fontWeight: FontWeight.w300),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 90,
-              ),
-              // WEIGHT INPUT
-              TextField(
-                controller: _weightController,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                cursorColor: accentColor,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: '0',
-                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 90,
+                ),
+                // HEIGHT INPUT
+                TextField(
+                  controller: _heightController,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  cursorColor: accentColor,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: '0',
+                    hintStyle: TextStyle(
+                      color: accentColor,
+                      fontSize: 42,
+                    ),
+                  ),
+                  style: const TextStyle(
                     color: accentColor,
                     fontSize: 42,
                   ),
                 ),
-                style: const TextStyle(
-                  color: accentColor,
-                  fontSize: 42,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 90,
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 30,
-              ),
-              // CALCULATE BUTTON
-              ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(75),
+                const Text(
+                  'Your Weight in kg',
+                  style: TextStyle(
+                      color: accentColor,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w300),
                 ),
-                child: Container(
-                  width: MediaQuery.of(context).size.height / 6.5,
-                  height: MediaQuery.of(context).size.height / 6.5,
-                  color: accentColor,
-                  child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        FocusScope.of(context).unfocus();
-                        bool isItChecked = nullTextControl();
-                        if (isItChecked == false) {
-                          results();
-                        }
-                      });
-                    },
-                    child: const Text(
-                      'Calculate',
-                      style: TextStyle(color: mainColor, fontSize: 20.0),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 90,
+                ),
+                // WEIGHT INPUT
+                TextField(
+                  controller: _weightController,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  cursorColor: accentColor,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: '0',
+                    hintStyle: TextStyle(
+                      color: accentColor,
+                      fontSize: 42,
+                    ),
+                  ),
+                  style: const TextStyle(
+                    color: accentColor,
+                    fontSize: 42,
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 30,
+                ),
+                // CALCULATE BUTTON
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(75),
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.height / 6.5,
+                    height: MediaQuery.of(context).size.height / 6.5,
+                    color: accentColor,
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          FocusScope.of(context).unfocus();
+                          bool isItChecked = nullTextControl();
+                          if (isItChecked == false) {
+                            results();
+                          }
+                        });
+                      },
+                      child: const Text(
+                        'Calculate',
+                        style: TextStyle(color: mainColor, fontSize: 20.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 30,
-              ),
-              // BMI RESULT SECTION
-              Text(
-                'Your BMI : ${_bmiResult.toStringAsFixed(2)}',
-                style: const TextStyle(
-                    color: accentColor,
-                    fontSize: 42,
-                    fontWeight: FontWeight.w300),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 100,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.height / 4.5,
-                child: const Divider(
-                  color: accentColor,
-                  height: 1,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 30,
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 100,
-              ),
-              Text(
-                _bmiTextResult,
-                style: const TextStyle(
+                // BMI RESULT SECTION
+                Text(
+                  'Your BMI : ${_bmiResult.toStringAsFixed(2)}',
+                  style: const TextStyle(
+                      color: accentColor,
+                      fontSize: 42,
+                      fontWeight: FontWeight.w300),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 100,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.height / 4.5,
+                  child: const Divider(
                     color: accentColor,
-                    fontSize: 42,
-                    fontWeight: FontWeight.w300),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 70,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.height,
-                height: MediaQuery.of(context).size.height / 9,
-                child: Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 9,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 11,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 15,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 20,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 35,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 35,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 20,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 15,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 11,
-                      ),
-                      BottomBar(
-                        barHeight: MediaQuery.of(context).size.height / 9,
-                      ),
-                    ],
+                    height: 1,
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 100,
+                ),
+                Text(
+                  _bmiTextResult,
+                  style: const TextStyle(
+                      color: accentColor,
+                      fontSize: 42,
+                      fontWeight: FontWeight.w300),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 70,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height / 9,
+                  child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 9,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 11,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 15,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 20,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 35,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 35,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 20,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 15,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 11,
+                        ),
+                        BottomBar(
+                          barHeight: MediaQuery.of(context).size.height / 9,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
