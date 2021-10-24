@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class GenderContanier extends StatelessWidget {
-  GenderContanier({Key? key, required this.gender, required this.contColor}) : super(key: key);
+  const GenderContanier({Key? key, required this.gender, required this.contColor}) : super(key: key);
 
   final String gender;
   final Color contColor;
@@ -19,8 +18,8 @@ class GenderContanier extends StatelessWidget {
           child: Image.asset(
             'assets/images/$gender.png',
           ),
-          width: 170,
-          height: 100,
+          width: MediaQuery.of(context).size.width / 2.5,
+          height: MediaQuery.of(context).size.height / 9.5,
           color: contColor,
         ),
       ),

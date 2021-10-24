@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace
 import 'package:flutter/material.dart';
 import 'package:my_bmi_calculator/constants/app_constants.dart';
 import 'package:my_bmi_calculator/man_woman_buttons/gender_cont.dart';
@@ -6,7 +5,7 @@ import 'package:my_bmi_calculator/widgets/bottom_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -19,21 +18,21 @@ class _HomeScreenState extends State<HomeScreen> {
   String _bmiTextResult = '';
   late double _bmiResult = 0.0;
 
-  TextEditingController _heightController = TextEditingController();
-  TextEditingController _weightController = TextEditingController();
+  final TextEditingController _heightController = TextEditingController();
+  final TextEditingController _weightController = TextEditingController();
 
   double _height = 0.0;
   double _weight = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           // GENDER SELECTION
@@ -65,21 +64,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           SizedBox(
-            height: 50,
+            height: MediaQuery.of(context).size.height / 19,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Your Height in cm',
                 style: TextStyle(
-                    color: accentColor,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w300,),
+                  color: accentColor,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w300,
+                ),
                 textAlign: TextAlign.start,
               ),
               SizedBox(
-                height: 10,
+                height: MediaQuery.of(context).size.height / 90,
               ),
               // HEIGHT INPUT
               TextField(
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
                 cursorColor: accentColor,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: '0',
                   hintStyle: TextStyle(
@@ -95,15 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 42,
                   ),
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   color: accentColor,
                   fontSize: 42,
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: MediaQuery.of(context).size.height / 90,
               ),
-              Text(
+              const Text(
                 'Your Weight in kg',
                 style: TextStyle(
                     color: accentColor,
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.w300),
               ),
               SizedBox(
-                height: 10,
+                height: MediaQuery.of(context).size.height / 90,
               ),
               // WEIGHT INPUT
               TextField(
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
                 cursorColor: accentColor,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: '0',
                   hintStyle: TextStyle(
@@ -127,34 +127,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 42,
                   ),
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   color: accentColor,
                   fontSize: 42,
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: MediaQuery.of(context).size.height / 30,
               ),
               // CALCULATE BUTTON
               ClipRRect(
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(75),
                 ),
                 child: Container(
-                  width: 150,
-                  height: 150,
+                  width: MediaQuery.of(context).size.height / 6.5,
+                  height: MediaQuery.of(context).size.height / 6.5,
                   color: accentColor,
                   child: TextButton(
                     onPressed: () {
                       setState(() {
                         FocusScope.of(context).unfocus();
                         bool isItChecked = nullTextControl();
-                        if(isItChecked == false) {
+                        if (isItChecked == false) {
                           results();
                         }
                       });
                     },
-                    child: Text(
+                    child: const Text(
                       'Calculate',
                       style: TextStyle(color: mainColor, fontSize: 20.0),
                     ),
@@ -162,60 +162,79 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: MediaQuery.of(context).size.height / 30,
               ),
               // BMI RESULT SECTION
-              Container(
-                child: Text(
-                  'Your BMI : ${_bmiResult.toStringAsFixed(2)}',
-                  style: TextStyle(
-                      color: accentColor,
-                      fontSize: 42,
-                      fontWeight: FontWeight.w300),
-                ),
+              Text(
+                'Your BMI : ${_bmiResult.toStringAsFixed(2)}',
+                style: const TextStyle(
+                    color: accentColor,
+                    fontSize: 42,
+                    fontWeight: FontWeight.w300),
               ),
               SizedBox(
-                height: 7.5,
+                height: MediaQuery.of(context).size.height / 100,
               ),
-              Container(
-                width: 200,
-                child: Divider(
+              SizedBox(
+                width: MediaQuery.of(context).size.height / 4.5,
+                child: const Divider(
                   color: accentColor,
                   height: 1,
                 ),
               ),
               SizedBox(
-                height: 7.5,
+                height: MediaQuery.of(context).size.height / 100,
               ),
-              Container(
-                child: Text(
-                  _bmiTextResult,
-                  style: TextStyle(
-                      color: accentColor,
-                      fontSize: 42,
-                      fontWeight: FontWeight.w300),
-                ),
+              Text(
+                _bmiTextResult,
+                style: const TextStyle(
+                    color: accentColor,
+                    fontSize: 42,
+                    fontWeight: FontWeight.w300),
               ),
               SizedBox(
-                height: 10,
+                height: MediaQuery.of(context).size.height / 70,
               ),
-              Container(
-                width: 420,
-                height: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    BottomBar(barHeight: 100),
-                    BottomBar(barHeight: 80),
-                    BottomBar(barHeight: 60),
-                    BottomBar(barHeight: 40),
-                    BottomBar(barHeight: 20),
-                    BottomBar(barHeight: 20),
-                    BottomBar(barHeight: 40),
-                    BottomBar(barHeight: 60),
-                    BottomBar(barHeight: 80),
-                    BottomBar(barHeight: 100),
-                  ],
+              SizedBox(
+                width: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height / 9,
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 9,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 11,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 15,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 20,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 35,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 35,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 20,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 15,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 11,
+                      ),
+                      BottomBar(
+                        barHeight: MediaQuery.of(context).size.height / 9,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -233,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
       buttons: [
         DialogButton(
           color: accentColor,
-          child: Text(
+          child: const Text(
             'OK',
             style: TextStyle(
                 color: mainColor, fontSize: 25, fontWeight: FontWeight.w400),
@@ -243,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ],
-      style: AlertStyle(
+      style: const AlertStyle(
         alertBorder: RoundedRectangleBorder(
           side: BorderSide.none,
           borderRadius: BorderRadius.all(
