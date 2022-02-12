@@ -1,12 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:my_bmi_calculator/constants/app_constants.dart';
+import 'package:my_bmi_calculator/core/constants/app_constants.dart';
 
 class BottomBar extends StatelessWidget {
-  const BottomBar({Key? key, required this.barHeight}) : super(key: key);
-
-  final double barHeight;
+  const BottomBar({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +13,9 @@ class BottomBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: 20,
-              height: barHeight,
-              decoration: BoxDecoration(
+              width: MediaQuery.of(context).size.width * 0.1,
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: const BoxDecoration(
                 color: accentColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25),
